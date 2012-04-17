@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="text:Google Analytics ID" content="" />
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="description" content="株式会社クロコスのエンジニアが Facebook アプリ開発情報を中心に、情報発信をしています。" />
+  <meta property="og:description" content="株式会社クロコスのエンジニアが Facebook アプリ開発情報を中心に、情報発信をしています。"/>
+  {block:PermalinkPage}
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{Permalink}"/>
+    {block:Posts}<meta property="og:title" content="{Title}"/>{/block:Posts}
+  {/block:PermalinkPage}
+  <meta property="og:image" content="http://dl.dropbox.com/u/248381/engineering-blog/assets/images/logo_square.png"/>
+  <meta property="og:site_name" content="Crocos Engineering Blog"/>
+  <meta property="fb:app_id" content="389841687707445"/>
+
+  <link href="http://dl.dropbox.com/u/248381/engineering-blog/assets/css/all.css" rel="stylesheet" />
+  <link href="{Favicon}" rel="shortcut icon" />
+  <title>{block:PostSummary}{PostSummary} :: {/block:PostSummary}{Title}{block:SearchPage} | Search results for "{SearchQuery}"{/block:SearchPage}</title>
+</head>
+<body>
+  <div id="fb-root"></div>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">Crocos Engineering Blog</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><a href="/archive">アーカイブ</a></li>
+            <li><a href="#about">このブログについて</a></li>
+          </ul>
+        </div>
+        <form class="navbar-form pull-right" action="/search">
+          <input type="search" name="q" value="{SearchQuery}" placeholder="Search" autosave="com.tumbler.crocos" results="10" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section id="entries">
+    {block:Posts}
+      <div class="article {TagsAsClasses}">
+        <h2><a href="{Permalink}">{Title}</a></h2>
+
+        <div class="row">
+          <div class="span9 entry-body">
+            {Body}
+
+            {block:PermalinkPage}
+              <div class="fb-comments" data-href="{Permalink}" data-num-posts="2" data-width="700"></div>
+              <div class="fb-recommendations-bar" data-href="{Permalink}" data-site="engineering.crocos.jp"></div>
+            {/block:PermalinkPage}
+          </div>
+
+          <div class="span3 metas">
+            <div class="author"></div>
+            <div class="fb-like" data-href="{Permalink}" data-send="false" data-width="220" data-show-faces="true"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-count="horizontal" data-via="Crocos_Inc">Tweet</a>
+
+            <p class="date">{block:Date}{TimeAgo}{/block:Date}&nbsp;&nbsp;
+            {block:HasTags}|&nbsp;&nbsp;Tags:
+              {block:Tags}
+                <span class="tags"><a href="{TagURL}">{Tag}</a></span>
+              {/block:Tags}
+              &nbsp;
+              {/block:HasTags}</p>
+          </div>
+      </div>
+    {/block:Posts}
+    </section>
+
+    {block:Pagination}
+    <div class="pagination">
+      <ul>
+        {block:PreviousPage}<li class="prev"><a href="{PreviousPage}">&laquo; Previous</a></li>{/block:PreviousPage}
+        {block:JumpPagination length="5"}
+          {block:CurrentPage}
+            <li class="active"><a href="{URL}">{PageNumber}</a></li>
+          {/block:CurrentPage}
+          {block:JumpPage}
+            <li><a href="{URL}">{PageNumber}</a></li>
+          {/block:JumpPage}
+        {/block:JumpPagination}
+        {block:NextPage}<li class="next"><a href="{NextPage}">Next &raquo;</a></ul>{/block:NextPage}
+      </ul>
+    </div>
+    {/block:Pagination}
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div id="about" class="span4">
+          <h3>About</h3>
+          <p><a target="_blank" href="http://crocos.co.jp">株式会社クロコス</a>のエンジニアブログです。</p>
+          <p>Facebook アプリに関することをメインに、情報発信をしていきます！</p>
+        </div>
+        <div class="span4">
+          <h3>Our Services</h3>
+          <ul>
+            <li><a target="_blank" href="http://present.crocos.jp">Crocos 懸賞</a></li>
+            <li><a target="_blank" href="http://scheduler.crocos.jp">Crocos スケジューラ</a></li>
+            <li><a target="_blank" href="http://yosegaki.crocos.jp">Crocos よせがき</a></li>
+            <li><a target="_blank" href="http://spot.crocos.jp">Crocos スポット</a></li>
+            <li><a target="_blank" href="http://marketing.crocos.jp">Crocos マーケティング</a></li>
+          </ul>
+        </div>
+        <div class="span4">
+          <h3>Engineers</h3>
+          <ul>
+            <li><a target="_blank" href="http://twitter.com/sotarok">@sotarok</a></li>
+            <li><a target="_blank" href="http://twitter.com/fivestr">@fivestr</a></li>
+            <li><a target="_blank" href="http://twitter.com/wozozo">@wozozo</a></li>
+            <li><a target="_blank" href="http://twitter.com/yuchimiri">@yuchimiri</a></li>
+            <li><a target="_blank" href="http://twitter.com/riaf">@riaf</a></li>
+          </ul>
+          <h3>Designers</h3>
+          <ul>
+            <li><a target="_blank" href="http://twitter.com/chacococco">@chacococco</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>Copyright &copy; 2011 Crocos, Inc. All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=389841687707445";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://dl.dropbox.com/u/248381/engineering-blog/assets/js/bootstrap.min.js"></script>
+  <script src="http://dl.dropbox.com/u/248381/engineering-blog/assets/js/all.min.js"></script>
+  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+
+  {block:IfGoogleAnalyticsID}
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("{text:Google Analytics ID}");
+    pageTracker._trackPageview();
+    } catch(err) {}
+  </script>
+  {/block:IfGoogleAnalyticsID}
+</body>
+</html>
+
+
+
