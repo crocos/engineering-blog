@@ -711,7 +711,7 @@ ol.linenums{margin-top:0;margin-bottom:0;color:#AEAEAE;}
 code{background-color:inherit;color:inherit;}
 body{position:relative;padding-top:40px;}body >div.navbar{border-bottom:2px solid #ffa500;}
 .navbar .fb-like{padding:10px;}
-#entries .article{margin:0 0 1em;padding:0 0 1em;border-bottom:1px solid #dbdbdb;padding-bottom:1em;}#entries .article h2{margin:1em 0;}
+#entries .article{margin:0 0 1em;padding:0 0 1em;border-bottom:1px solid #dbdbdb;padding-bottom:1em;}#entries .article h1,#entries .article h2,#entries .article h3,#entries .article h4,#entries .article h5,#entries .article h6{margin:.75em 0;}
 #entries .article p{line-height:1.8;}
 #entries .article .metas .author{margin-bottom:1em;}
 #entries .article .metas .date{margin-top:1em;}
