@@ -710,9 +710,10 @@ ol.linenums{margin-top:0;margin-bottom:0;color:#AEAEAE;}
 @media print{pre{background-color:none;} pre .str,code .str{color:#060;} pre .kwd,code .kwd{color:#006;font-weight:bold;} pre .com,code .com{color:#600;font-style:italic;} pre .typ,code .typ{color:#404;font-weight:bold;} pre .lit,code .lit{color:#044;} pre .pun,code .pun{color:#440;} pre .pln,code .pln{color:#000;} pre .tag,code .tag{color:#006;font-weight:bold;} pre .atn,code .atn{color:#404;} pre .atv,code .atv{color:#060;}}a{color:#3db7cc;}a:hover{color:#80ecff;}
 code{background-color:inherit;color:inherit;}
 body{position:relative;padding-top:40px;}body >div.navbar{border-bottom:2px solid #ffa500;}
-#entries .article{margin:0 0 1em;padding:0 0 1em;}#entries .article h2{margin:1em 0;}
+.navbar .fb-like{padding:10px;}
+#entries .article{margin:0 0 1em;padding:0 0 1em;border-bottom:1px solid #dbdbdb;padding-bottom:1em;}#entries .article h2{margin:1em 0;}
 #entries .article p{line-height:1.8;}
-#entries .article .metas{border-bottom:1px solid #dbdbdb;padding-bottom:1em;}#entries .article .metas .author{margin-bottom:1em;}
+#entries .article .metas .author{margin-bottom:1em;}
 #entries .article .metas .date{margin-top:1em;}
 .footer{background-color:#eee;padding:30px 0;text-shadow:0 1px 0 #fff;border-top:1px solid #e5e5e5;-webkit-box-shadow:inset 0 5px 15px rgba(0, 0, 0, 0.025);-moz-box-shadow:inset 0 5px 15px rgba(0, 0, 0, 0.025);}.footer p{color:#555;}
 #tumblr_controls{top:inherit !important;bottom:10px !important;}
