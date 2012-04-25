@@ -26,22 +26,3 @@ hashComments:3,cStyleComments:!0,multilineStrings:!0,tripleQuotedStrings:!0,rege
 !k){b=n;for(var o=void 0,c=b.firstChild;c;c=c.nextSibling)var i=c.nodeType,o=i===1?o?b:c:i===3?N.test(c.nodeValue)?b:o:o;b=(f=o===b?void 0:o)&&"CODE"===f.tagName}b&&(k=f.className.match(g));k&&(k=k[1]);b=!1;for(o=n.parentNode;o;o=o.parentNode)if((o.tagName==="pre"||o.tagName==="code"||o.tagName==="xmp")&&o.className&&o.className.indexOf("prettyprint")>=0){b=!0;break}b||((b=(b=n.className.match(/\blinenums\b(?::(\d+))?/))?b[1]&&b[1].length?+b[1]:!0:!1)&&D(n,b),d={g:k,h:n,i:b},E(d))}}p<h.length?setTimeout(m,
 250):a&&a()}for(var e=[document.getElementsByTagName("pre"),document.getElementsByTagName("code"),document.getElementsByTagName("xmp")],h=[],k=0;k<e.length;++k)for(var t=0,s=e[k].length;t<s;++t)h.push(e[k][t]);var e=q,l=Date;l.now||(l={now:function(){return+new Date}});var p=0,d,g=/\blang(?:uage)?-([\w.]+)(?!\S)/;m()};window.PR={createSimpleLexer:x,registerLangHandler:k,sourceDecorator:u,PR_ATTRIB_NAME:"atn",PR_ATTRIB_VALUE:"atv",PR_COMMENT:"com",PR_DECLARATION:"dec",PR_KEYWORD:"kwd",PR_LITERAL:"lit",
 PR_NOCODE:"nocode",PR_PLAIN:"pln",PR_PUNCTUATION:"pun",PR_SOURCE:"src",PR_STRING:"str",PR_TAG:"tag",PR_TYPE:"typ"}})();
-
-
-$(function() {
-  var members;
-  members = ["sotarok", "fivestr", "yuchimiri", "wozozo", "riaf", "chacococco"];
-  $("#entries .article").each(function() {
-    var member, self, _i, _len;
-    self = $(this);
-    for (_i = 0, _len = members.length; _i < _len; _i++) {
-      member = members[_i];
-      if (self.hasClass(member)) {
-        $(".author", self).html("<p><a href=\"/tagged/" + member + "\"><img\n  src=\"https://api.twitter.com/1/users/profile_image?screen_name=" + member + "&size=mini\"\n  alt=\"" + member + "\" /></a>&nbsp;\n  <a href=\"/tagged/" + member + "\">" + member + "</a></p>");
-        return;
-      }
-    }
-  });
-  $("pre").addClass("prettyprint linenums");
-  return prettyPrint();
-});
