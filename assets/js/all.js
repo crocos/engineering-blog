@@ -30,7 +30,7 @@ PR_NOCODE:"nocode",PR_PLAIN:"pln",PR_PUNCTUATION:"pun",PR_SOURCE:"src",PR_STRING
 
 $(function() {
   var members;
-  members = ["sotarok", "fivestr", "yuchimiri", "wozozo", "riaf", "chacococco"];
+  members = ["sotarok", "riaf", "fivestr", "yuchimiri", "cocoitiban", "wozozo", "chacococco"];
   $("#entries .article").each(function() {
     var member, self, _i, _len;
     self = $(this);

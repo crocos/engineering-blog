@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="text:Google Analytics ID" content="" />
+  <meta name="text:Assets Base URL" content="http://crocos.github.com/engineering-blog/assets" />
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
   <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <meta name="description" content="株式会社クロコスのエンジニアが Facebook アプリ開発情報を中心に、情報発信をしています。" />
@@ -12,11 +13,11 @@
     <meta property="og:url" content="{Permalink}"/>
     {block:Posts}<meta property="og:title" content="{Title}"/>{/block:Posts}
   {/block:PermalinkPage}
-  <meta property="og:image" content="http://crocos.github.com/engineering-blog/assets/images/logo_square.png"/>
+  <meta property="og:image" content="{text:Assets Base URL}/images/logo_square.png"/>
   <meta property="og:site_name" content="Crocos Engineering Blog"/>
   <meta property="fb:app_id" content="389841687707445"/>
 
-  <link href="http://crocos.github.com/engineering-blog/assets/css/all.css" rel="stylesheet" />
+  <link href="{text:Assets Base URL}/css/all.css" rel="stylesheet" />
   <link rel="alternate" type="application/rss+xml" href="{RSS}" />
   <link href="{Favicon}" rel="shortcut icon" />
   <title>{block:PostSummary}{PostSummary} :: {/block:PostSummary}{Title}{block:SearchPage} | Search results for "{SearchQuery}"{/block:SearchPage}</title>
@@ -48,38 +49,70 @@
   </div>
 
   <div class="container">
-    <section id="entries">
-    {block:Posts}
-      <div class="article {TagsAsClasses}">
-        <h2><a href="{Permalink}">{Title}</a></h2>
+    <div class="row">
+      <div class="span10">
+        <section id="entries">
+        {block:Posts}
+          <div class="article {TagsAsClasses}">
+            <h2><a href="{Permalink}">{Title}</a></h2>
 
-        <div class="row">
-          <div class="span9 entry-body">
-            {Body}
+            <div class="row">
+              <div class="span8 entry-body">
+                {Body}
 
-            {block:PermalinkPage}
-              <div class="fb-comments" data-href="{Permalink}" data-num-posts="2" data-width="700"></div>
-              <div class="fb-recommendations-bar" data-href="{Permalink}" data-site="engineering.crocos.jp"></div>
-            {/block:PermalinkPage}
+                {block:PermalinkPage}
+                  <div class="fb-comments" data-href="{Permalink}" data-num-posts="2" data-width="700"></div>
+                  <div class="fb-recommendations-bar" data-href="{Permalink}" data-site="engineering.crocos.jp"></div>
+                {/block:PermalinkPage}
+              </div>
+
+              <div class="span2 metas">
+                <div class="author"></div>
+                <ul class="social-plugins unstyled">
+                  <li><div class="fb-like" data-href="{Permalink}" data-send="false" data-width="140" data-show-faces="true"></div></li>
+                  <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title} :: Crocos Engineering Blog" data-count="horizontal" data-via="Crocos_Inc">Tweet</a></li>
+                  <li><a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-title="{Title}" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+                </ul>
+
+                <p class="date">{block:Date}{TimeAgo}{/block:Date}&nbsp;&nbsp;
+                {block:HasTags}|&nbsp;&nbsp;Tags:
+                  {block:Tags}
+                    <span class="tags label"><a href="{TagURL}">{Tag}</a></span>
+                  {/block:Tags}
+                  &nbsp;
+                  {/block:HasTags}</p>
+              </div>
+            </div>
           </div>
-
-          <div class="span3 metas">
-            <div class="author"></div>
-            <div class="fb-like" data-href="{Permalink}" data-send="false" data-width="220" data-show-faces="true"></div>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-count="horizontal" data-via="Crocos_Inc">Tweet</a>
-
-            <p class="date">{block:Date}{TimeAgo}{/block:Date}&nbsp;&nbsp;
-            {block:HasTags}|&nbsp;&nbsp;Tags:
-              {block:Tags}
-                <span class="tags"><a href="{TagURL}">{Tag}</a></span>
-              {/block:Tags}
-              &nbsp;
-              {/block:HasTags}</p>
-          </div>
-        </div>
+        {/block:Posts}
+        </section>
       </div>
-    {/block:Posts}
-    </section>
+      <div class="span2">
+        <div class="page-header">
+          <h3>書籍紹介</h3>
+        </div>
+        <p>弊社エンジニアが執筆した書籍です！</p>
+
+        <ul class="thumbnails">
+          <li class="span2">
+            <div class="thumbnail">
+              <img src="{text:Assets Base URL}/images/perfect-php.jpg" />
+              <h4>パーフェクトPHP</h4>
+              <p>1冊で言語仕様から最新の技術までを網羅した内容。網羅的に解説されているだけでなく，各技術に関しては基本からしっかり解説し，フレームワークなどを利用したWebアプリケーション開発の解説などは，内部処理が裏で何をしているのかを掘り下げて解説してあるため，PHPを体系的に学びたい方はもちろん，より深い知識を得たい中～上級者にもお勧めの一冊である。</p>
+              <p><a href="http://gihyo.jp/book/2010/978-4-7741-4437-5" target="_blank">パーフェクトPHP</a></p>
+            </div>
+          </li>
+          <li class="span2">
+            <div class="thumbnail">
+              <img src="{text:Assets Base URL}/images/takahashi.jpg" />
+              <h4>効率的なWebアプリケーションの作り方　～PHPによるモダン開発入門</h4>
+              <p>本書はプログラミング経験者向けに，より良いプログラムを書くためのノウハウを解説した書籍です。実際にアプリケーションを開発するときはフレームワークでカバーできない問題も多々あります。本書ではプログラミング言語PHPを使って，実際にアプリケーションを作成しながら，問題解決のためのテクニックや，実際の現場で効率的に開発を進めていくための開発スタイルを，考え方や背景も踏まえながら説明しています。</p>
+              <p><a href="http://gihyo.jp/book/2012/978-4-7741-5082-6" target="_blank">効率的なWebアプリケーションの作り方　～PHPによるモダン開発入門</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     {block:Pagination}
     <div class="pagination">
@@ -121,10 +154,11 @@
           <h3>Engineers</h3>
           <ul>
             <li><a target="_blank" href="http://twitter.com/sotarok">@sotarok</a></li>
-            <li><a target="_blank" href="http://twitter.com/fivestr">@fivestr</a></li>
-            <li><a target="_blank" href="http://twitter.com/wozozo">@wozozo</a></li>
-            <li><a target="_blank" href="http://twitter.com/yuchimiri">@yuchimiri</a></li>
             <li><a target="_blank" href="http://twitter.com/riaf">@riaf</a></li>
+            <li><a target="_blank" href="http://twitter.com/fivestr">@fivestr</a></li>
+            <li><a target="_blank" href="http://twitter.com/yuchimiri">@yuchimiri</a></li>
+            <li><a target="_blank" href="http://twitter.com/wozozo">@wozozo</a></li>
+            <li><a target="_blank" href="http://twitter.com/cocoitiban">@cocoitiban</a></li>
           </ul>
           <h3>Designers</h3>
           <ul>
@@ -146,7 +180,7 @@
   }(document, 'script', 'facebook-jssdk'));</script>
   <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
   <script src="http://crocos.github.com/engineering-blog/vendor/twitter-bootstrap/docs/assets/js/bootstrap.min.js"></script>
-  <script src="http://crocos.github.com/engineering-blog/assets/js/all.min.js"></script>
+  <script src="{text:Assets Base URL}/js/all.min.js"></script>
   <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
   {block:IfGoogleAnalyticsID}
@@ -161,5 +195,6 @@
     } catch(err) {}
   </script>
   {/block:IfGoogleAnalyticsID}
+  <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 </body>
 </html>

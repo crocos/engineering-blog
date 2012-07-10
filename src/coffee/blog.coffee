@@ -1,10 +1,12 @@
 $ ->
+  # よく書く人を前に持っていったほうが省エネかな！
   members = [
     "sotarok"
+    "riaf"
     "fivestr"
     "yuchimiri"
+    "cocoitiban"
     "wozozo"
-    "riaf"
     "chacococco"
   ]
 
