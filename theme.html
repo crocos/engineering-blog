@@ -1,200 +1,273 @@
 <!DOCTYPE html>
-<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
-<head>
-  <meta charset="utf-8" />
-  <meta name="text:Google Analytics ID" content="" />
-  <meta name="text:Assets Base URL" content="http://crocos.github.com/engineering-blog/assets" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
-  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <meta name="description" content="株式会社クロコスのエンジニアが Facebook アプリ開発情報を中心に、情報発信をしています。" />
-  <meta property="og:description" content="株式会社クロコスのエンジニアが Facebook アプリ開発情報を中心に、情報発信をしています。"/>
-  {block:PermalinkPage}
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="{Permalink}"/>
-    {block:Posts}<meta property="og:title" content="{Title}"/>{/block:Posts}
-  {/block:PermalinkPage}
-  <meta property="og:image" content="{text:Assets Base URL}/images/logo_square.png"/>
-  <meta property="og:site_name" content="Crocos Engineering Blog"/>
-  <meta property="fb:app_id" content="389841687707445"/>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="{MetaDescription}">
+    <meta name="text:Google Analytics ID" content="" />
+    {block:PermalinkPage}
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="{Permalink}">
+      {block:Posts}<meta property="og:title" content="{Title}">{/block:Posts}
+    {/block:PermalinkPage}
+    <meta property="og:image" content="http://res.cloudinary.com/riaf/image/upload/v1378448851/engblg_logo_jze44s.png">
+    <meta property="og:site_name" content="Crocos Engineering Blog">
+    <meta property="fb:app_id" content="389841687707445">
+    <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.min.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" title="Feed" />
+    <link rel="shortcut icon" href="{Favicon}">
+    <title>{block:PostSummary}{PostSummary} :: {/block:PostSummary}{Title}{block:SearchPage} | Search results for "{SearchQuery}"{/block:SearchPage}</title>
+    <style type="text/css">
+      body {
+        background: #f4f4f4;
+      }
+      .header {
+        padding: 30px 0;
+      }
+      .sidebar {
+        margin: 30px 0;
+      }
+      .header a.brand {
+        display: block;
+        width: 245px;
+        height: 185px;
+        background: url(http://res.cloudinary.com/riaf/image/upload/v1378448851/engblg_logo_jze44s.png) no-repeat;
+        text-indent: -32767px;
+        overflow: hidden;
+      }
+      .posts .post {
+        margin: 0 0 30px;
+        padding: 10px 30px 20px;
+        background: #fff;
+      }
+      .posts .post .post-body {
+        margin: 1em 0;
+        line-height: 1.8;
+      }
+      .pager a {
+        color: #777;
+      }
+      .footer {
+        margin: 100px 0 0;
+        padding: 40px 0 30px;
+        border-top: 1px solid #e5e5e5;
+        color: #777;
+      }
 
-  <link href="{text:Assets Base URL}/css/all.css" rel="stylesheet" />
-  <link rel="alternate" type="application/rss+xml" href="{RSS}" />
-  <link href="{Favicon}" rel="shortcut icon" />
-  <title>{block:PostSummary}{PostSummary} :: {/block:PostSummary}{Title}{block:SearchPage} | Search results for "{SearchQuery}"{/block:SearchPage}</title>
-</head>
-<body>
-  <div id="fb-root"></div>
-
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="/">Crocos Engineering Blog</a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li><a href="/archive">アーカイブ</a></li>
-            <li><a href="#about">このブログについて</a></li>
-            <li><div class="fb-like" data-href="http://engineering.crocos.jp/" data-send="false" data-layout="button_count" data-width="110" data-show-faces="false"></div></li>
-          </ul>
-        </div>
-        <form class="navbar-form pull-right" action="/search">
-          <input type="search" name="q" value="{SearchQuery}" placeholder="Search" autosave="com.tumbler.crocos" results="10" />
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="span10">
-        <section id="entries">
-        {block:Posts}
-          <div class="article {TagsAsClasses}">
-            <h2><a href="{Permalink}">{Title}</a></h2>
-
+      {CustomCSS}
+    </style>
+  </head>
+  <body>
+    <div class="fb-root"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="header">
             <div class="row">
-              <div class="span8 entry-body">
-                {Body}
-
-                {block:PermalinkPage}
-                  <div class="fb-comments" data-href="{Permalink}" data-num-posts="2" data-width="700"></div>
-                  <div class="fb-recommendations-bar" data-href="{Permalink}" data-site="engineering.crocos.jp"></div>
-                {/block:PermalinkPage}
+              <div class="col-md-4">
+                <a class="brand" href="/">{Title}</a>
               </div>
-
-              <div class="span2 metas">
-                <div class="author"></div>
-                <ul class="social-plugins unstyled">
-                  <li><div class="fb-like" data-href="{Permalink}" data-send="false" data-width="140" data-show-faces="true"></div></li>
-                  <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title} :: Crocos Engineering Blog" data-count="horizontal" data-via="Crocos_Inc">Tweet</a></li>
-                  <li><a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-title="{Title}" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
-                </ul>
-
-                <p class="date">{block:Date}{TimeAgo}{/block:Date}&nbsp;&nbsp;
-                {block:HasTags}|&nbsp;&nbsp;Tags:
-                  {block:Tags}
-                    <span class="tags label"><a href="{TagURL}">{Tag}</a></span>
-                  {/block:Tags}
-                  &nbsp;
-                  {/block:HasTags}</p>
+              <div class="col-md-8">
+                <p>{Description}</p>
               </div>
             </div>
           </div>
-        {/block:Posts}
-        </section>
-      </div>
-      <div class="span2">
-        <div class="page-header">
-          <h3>書籍紹介</h3>
-        </div>
-        <p>弊社エンジニアが執筆した書籍です！</p>
 
-        <ul class="thumbnails">
-          <li class="span2">
-            <div class="thumbnail">
-              <img src="{text:Assets Base URL}/images/perfect-php.jpg" />
-              <h4>パーフェクトPHP</h4>
-              <p>1冊で言語仕様から最新の技術までを網羅した内容。網羅的に解説されているだけでなく，各技術に関しては基本からしっかり解説し，フレームワークなどを利用したWebアプリケーション開発の解説などは，内部処理が裏で何をしているのかを掘り下げて解説してあるため，PHPを体系的に学びたい方はもちろん，より深い知識を得たい中～上級者にもお勧めの一冊である。</p>
-              <p><a href="http://gihyo.jp/book/2010/978-4-7741-4437-5" target="_blank">パーフェクトPHP</a></p>
+          <div class="posts">
+            {block:Posts}
+              {block:Text}
+                <div class="post {TagsAsClasses}">
+                  {block:Title}
+                    <h3><a href="{Permalink}">{Title}</a></h3>
+                  {/block:Title}
+
+                  <div class="post-meta">
+                    <ul class="list-inline date author">
+                      <li><span class="glyphicon glyphicon-calendar"></span> {block:Date}{TimeAgo}{/block:Date}</li>
+                    </ul>
+                    {block:HasTags}
+                    <ul class="list-inline">
+                      <li>Tags:</li>
+                      {block:Tags}
+                        <li><a href="{TagURL}"><span class="label label-default">{Tag}</span></a></li>
+                      {/block:Tags}
+                    </ul>
+                    {/block:HasTags}
+                  </div>
+
+                  <div class="post-body">
+                    {Body}
+                  </div>
+
+                  <ul class="list-inline">
+                    <li><div class="fb-like" data-href="{Permalink}" data-layout="button_count" data-send="false" data-width="100" data-show-faces="false"></div></li>
+                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title} :: Crocos Engineering Blog" data-count="horizontal" data-via="Crocos_Inc">Tweet</a></li>
+                    <li><a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-title="{Title}" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+                  </ul>
+                </div>
+              {/block:Text}
+            {/block:Posts}
+          </div>
+
+          {block:Pagination}
+          <ul class="pager">
+            {block:PreviousPage}<li class="previous"><a href="{PreviousPage}"><span class="glyphicon glyphicon-chevron-left"></span> Previous</a></li>{/block:PreviousPage}
+            {block:NextPage}<li class="next"><a href="{NextPage}">Next <span class="glyphicon glyphicon-chevron-right"></span></a></ul>{/block:NextPage}
+          </ul>
+          {/block:Pagination}
+
+        </div>
+        <div class="col-md-2">
+          <div class="sidebar">
+            <form action="/search">
+              <div class="input-group">
+                <input class="form-control" type="text" name="q" value="{SearchQuery}" placeholder="SEARCH">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+              </div>
+            </form>
+            <br />
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="#about">About</a><li>
+              <li><a href="/archive">Archive</a><li>
+            </ul>
+            <div class="page-header">
+              <h4>書籍紹介</h4>
+              <p class="muted">弊社エンジニアが執筆した書籍です</p>
             </div>
-          </li>
-          <li class="span2">
-            <div class="thumbnail">
-              <img src="{text:Assets Base URL}/images/takahashi.jpg" />
-              <h4>効率的なWebアプリケーションの作り方　～PHPによるモダン開発入門</h4>
-              <p>本書はプログラミング経験者向けに，より良いプログラムを書くためのノウハウを解説した書籍です。実際にアプリケーションを開発するときはフレームワークでカバーできない問題も多々あります。本書ではプログラミング言語PHPを使って，実際にアプリケーションを作成しながら，問題解決のためのテクニックや，実際の現場で効率的に開発を進めていくための開発スタイルを，考え方や背景も踏まえながら説明しています。</p>
-              <p><a href="http://gihyo.jp/book/2012/978-4-7741-5082-6" target="_blank">効率的なWebアプリケーションの作り方　～PHPによるモダン開発入門</a></p>
+
+            <div class="thumbnails">
+              <p>
+                <a class="thumbnail" href="http://gihyo.jp/book/2010/978-4-7741-4437-5" target="_blank">
+                  <img src="http://res.cloudinary.com/riaf/image/upload/v1378450050/perfect-php_iumjil.jpg" alt="パーフェクトPHP">
+                </a>
+              </p>
+              <p>
+                <a class="thumbnail" href="http://gihyo.jp/book/2012/978-4-7741-5082-6" target="_blank">
+                  <img src="http://res.cloudinary.com/riaf/image/upload/v1378450053/takahashi_hespyj.jpg" alt="効率的なWebアプリケーションの作り方　～PHPによるモダン開発入門">
+                </a>
+              </p>
             </div>
-          </li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="about">
+      <div class="container">
+        <ul class="list-inline">
+          <li><div class="fb-like" data-href="http://engineering.crocos.jp/" data-layout="button_count" data-send="false" data-width="100" data-show-faces="false"></div></li>
+          <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://engineering.crocos.jp/" data-text="Crocos Engineering Blog" data-count="horizontal" data-via="Crocos_Inc">Tweet</a></li>
+          <li><a href="http://b.hatena.ne.jp/entry/engineering.crocos.jp/" class="hatena-bookmark-button" data-hatena-bookmark-title="{Title}" data-hatena-bookmark-layout="standard" title="このサイトをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このサイトをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
         </ul>
+
+        <div class="row">
+          <div class="col-md-4">
+            <h4>About</h4>
+            <p>{Description}</p>
+            <hr />
+            <ul class="list-unstyled">
+              <li><a target="_blank" href="http://crocos.co.jp/">株式会社クロコス</a></li>
+              <li><a target="_blank" href="https://marketing.crocos.jp/">Crocos マーケティング</a></li>
+              <li><a target="_blank" href="http://campaign.crocos.jp/">Crocos キャンペーン</a></li>
+            </ul>
+            <hr />
+            <ul class="list-unstyled">
+              <li><a target="_blank" href="https://github.com/crocos">GitHub</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Engineers</h4>
+            <ul class="list-unstyled">
+              <li><a target="_blank" href="https://github.com/sotarok">sotarok</a> <small>Sotaro KARASAWA</small></li>
+              <li><a target="_blank" href="https://github.com/fivestar">fivestr</a> <small>Katsuhiro OGAWA</small></li>
+              <li><a target="_blank" href="https://github.com/riaf">riaf</a> <small>Keisuke SATO</small></li>
+              <li><a target="_blank" href="https://github.com/cocoiti">cocoiti</a></li>
+              <li><a target="_blank" href="https://github.com/yudoufu">yudoufu</a> <small>Daichi Kamemoto</small></li>
+              <li><a target="_blank" href="https://github.com/yuchimiri">yuchimiri</a> <small>Yuki MAEJIMA</small></li>
+              <li><a target="_blank" href="https://github.com/wozozo">wozozo</a> <small>Yoichi Fujimoto</small></li>
+              <li><a target="_blank" href="https://github.com/suzuki">suzuki</a> <small>Norio Suzuki</small></li>
+              <li><a target="_blank" href="https://github.com/kalibora">kalibora</a> <small>Toshiyuki FUJITA</small></li>
+              <li><a target="_blank" href="https://github.com/tetaketa">tetaketa</a></li>
+              <li><a target="_blank" href="https://github.com/okapon">okapon</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Designers</h4>
+            <ul class="list-unstyled">
+              <li><a target="_blank" href="https://github.com/chacococco">chacococco</a></li>
+              <li><a target="_blank" href="https://github.com/yumiyumi">yumiyumi</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <p>Copyright &copy; 2011-2013 Crocos Inc., All rights reserved.</p>
       </div>
     </div>
 
-    {block:Pagination}
-    <div class="pagination">
-      <ul>
-        {block:PreviousPage}<li class="prev"><a href="{PreviousPage}">&laquo; Previous</a></li>{/block:PreviousPage}
-        {block:JumpPagination length="5"}
-          {block:CurrentPage}
-            <li class="active"><a href="{URL}">{PageNumber}</a></li>
-          {/block:CurrentPage}
-          {block:JumpPage}
-            <li><a href="{URL}">{PageNumber}</a></li>
-          {/block:JumpPage}
-        {/block:JumpPagination}
-        {block:NextPage}<li class="next"><a href="{NextPage}">Next &raquo;</a></ul>{/block:NextPage}
-      </ul>
-    </div>
-    {/block:Pagination}
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+      $(function(){
+        var authors = [
+          { name: 'sotarok',    fbid: 'sotarok' },
+          { name: 'fivestar',   fbid: 'katsuhiro.ogawa' },
+          { name: 'fivestr',    fbid: 'katsuhiro.ogawa' },
+          { name: 'riaf',       fbid: 'sato.keisuke' },
+          { name: 'cocoitiban', fbid: 'cocoiti' },
+          { name: 'yudoufu',    fbid: 'yudoufu' },
+          { name: 'cocoiti',    fbid: 'cocoiti' },
+          { name: 'yuchimiri',  fbid: 'yuchimiri' },
+          { name: 'wozozo',     fbid: 'wozozo' },
+          { name: 'suzuki',     fbid: 'norio.suzuki' },
+          { name: 'tofujiit',   fbid: 'toshiyuki.fujita.9887' },
+          { name: 'tetaketa',   fbid: 'tetsuya.taketani' },
+          { name: 'okapon',     fbid: 'yuuichi.okada' },
+          { name: 'chacococco', fbid: 'chacococco' },
+          { name: 'misuyumi',   fbid: 'misu.yumi' },
+          { name: 'yumiyumi',   fbid: 'misu.yumi' },
+          { name: 'yummy',      fbid: 'yumiyahata' }
+        ];
 
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div id="about" class="span4">
-          <h3>About</h3>
-          <p><a target="_blank" href="http://crocos.co.jp">株式会社クロコス</a>のエンジニアブログです。</p>
-          <p>Facebook アプリに関することをメインに、情報発信をしていきます！</p>
-        </div>
-        <div class="span4">
-          <h3>Our Services</h3>
-          <ul>
-            <li><a target="_blank" href="http://present.crocos.jp">Crocos 懸賞</a></li>
-            <li><a target="_blank" href="http://scheduler.crocos.jp">Crocos スケジューラ</a></li>
-            <li><a target="_blank" href="http://yosegaki.crocos.jp">Crocos よせがき</a></li>
-            <li><a target="_blank" href="http://spot.crocos.jp">Crocos スポット</a></li>
-            <li><a target="_blank" href="http://marketing.crocos.jp">Crocos マーケティング</a></li>
-          </ul>
-        </div>
-        <div class="span4">
-          <h3>Engineers</h3>
-          <ul>
-            <li><a target="_blank" href="http://twitter.com/sotarok">@sotarok</a></li>
-            <li><a target="_blank" href="http://twitter.com/riaf">@riaf</a></li>
-            <li><a target="_blank" href="http://twitter.com/fivestr">@fivestr</a></li>
-            <li><a target="_blank" href="http://twitter.com/yuchimiri">@yuchimiri</a></li>
-            <li><a target="_blank" href="http://twitter.com/wozozo">@wozozo</a></li>
-            <li><a target="_blank" href="http://twitter.com/cocoitiban">@cocoitiban</a></li>
-          </ul>
-          <h3>Designers</h3>
-          <ul>
-            <li><a target="_blank" href="http://twitter.com/chacococco">@chacococco</a></li>
-          </ul>
-        </div>
-      </div>
-      <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>Copyright &copy; 2011 Crocos, Inc. All rights reserved</p>
-    </div>
-  </footer>
+        $('pre').addClass('prettyprint');
 
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=389841687707445";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-  <script src="http://crocos.github.com/engineering-blog/vendor/twitter-bootstrap/docs/assets/js/bootstrap.min.js"></script>
-  <script src="{text:Assets Base URL}/js/all.min.js"></script>
-  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+        $('.post').each(function() {
+          var $post = $(this)
+            , $author = $('.author', $post);
 
-  {block:IfGoogleAnalyticsID}
-  <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          $.each(authors, function(i, val) {
+            if ($post.hasClass(val.name)) {
+              $author.append('<li><img src="http://res.cloudinary.com/riaf/image/facebook/w_25,h_25,c_thumb,g_face/' + val.fbid + '.png" alt="' + val.name + '" /> ' + val.name + '</li>');
+            }
+          });
+        });
+      });
     </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js" async="async"></script>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=389841687707445";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <script src="//platform.twitter.com/widgets.js" async="async"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js" async="async"></script>
+
+    {block:IfGoogleAnalyticsID}
     <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("{text:Google Analytics ID}");
-    pageTracker._trackPageview();
-    } catch(err) {}
-  </script>
-  {/block:IfGoogleAnalyticsID}
-  <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-</body>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("{text:Google Analytics ID}");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+    {/block:IfGoogleAnalyticsID}
+    <script src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+    <link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css">
+  </body>
 </html>
